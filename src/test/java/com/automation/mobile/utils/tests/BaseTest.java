@@ -2,11 +2,10 @@ package com.automation.mobile.utils.tests;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,6 +15,9 @@ public class BaseTest {
     private static final String PROPERTIES_FILE = "src/test/resources/config.properties";
     private static final Properties properties = new Properties();
     public static AndroidDriver driver;
+
+    public BaseTest() {
+    }
 
     @BeforeMethod(alwaysRun = true)
     public void environmentSetUp() {
@@ -47,5 +49,14 @@ public class BaseTest {
 
     public static String getCapability(String variable) {
         return properties.getProperty(variable);
+    }
+
+    public HomeScreen returnHomeScreen() {
+        return new HomeScreen(driver);
+    }
+
+    @AfterTest
+    public void closeDriver() {
+        driver.close();
     }
 }
