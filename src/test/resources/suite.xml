@@ -20,4 +20,10 @@
             <class name="com.automation.mobile.test.SuccessfulLoginTest"/>
         </classes>
     </test>
+
+    <test name="Successful swipe Test">
+        <classes>
+            <class name="com.automation.mobile.test.SwipeCardsTest"/>
+        </classes>
+    </test>
 </suite>

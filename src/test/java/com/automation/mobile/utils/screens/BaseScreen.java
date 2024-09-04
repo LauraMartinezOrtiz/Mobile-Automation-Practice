@@ -73,6 +73,12 @@ public class BaseScreen {
         return element.isDisplayed();
     }
 
+    protected boolean isElementHidden(WebElement element) {
+        WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        webDriverWait.until(ExpectedConditions.invisibilityOf(element));
+        return element.isEnabled();
+    }
+
     protected void waitSomeSeconds(double time) {
         try {
             Thread.sleep((long) (time * 1000));

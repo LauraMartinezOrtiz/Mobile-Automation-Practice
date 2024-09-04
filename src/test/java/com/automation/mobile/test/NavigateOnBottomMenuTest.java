@@ -67,7 +67,7 @@ public class NavigateOnBottomMenuTest extends BaseTest {
         SwipeScreen swipeScreen = homeScreen.openSwipeScreen();
         Assert.assertTrue(swipeScreen.isSwipeScreenTitleVisible());
         Assert.assertTrue(swipeScreen.isSwipeScreenDescriptionVisible());
-        Assert.assertTrue(swipeScreen.isGithubCardVisible());
+        Assert.assertTrue(swipeScreen.isFirstCardVisible());
     }
 
     @Test

@@ -21,7 +21,7 @@ public class SignUpScreen extends BaseScreen {
     private static final String SUCCESS_TITLE = "UiSelector().resourceId(\"android:id/alertTitle\")";
     private static final String SUCCESS_MSG = "UiSelector().resourceId(\"android:id/message\")";
 
-    private static final String LOGIN_LABEL_BTN = "UiSelector().text(\"Login\")";
+    private static final String LOGIN_LABEL_BTN = "UiSelector().text(\"Login\").instance(0)";
     private static final String OK_BUTTON = "UiSelector().resourceId(\"android:id/button1\")";
 
     @AndroidFindBy(uiAutomator = LOGIN_TITLE)

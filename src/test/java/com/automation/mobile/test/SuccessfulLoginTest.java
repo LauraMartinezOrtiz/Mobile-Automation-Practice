@@ -15,7 +15,7 @@ public class SuccessfulLoginTest extends BaseTest {
 
     @BeforeTest
     @Parameters({"password"})
-    public void checkLoginScreenTest(String password) {
+    public void checkSignupScreenTest(String password) {
         HomeScreen homeScreen = returnHomeScreen();
         LoginScreen loginScreen = homeScreen.openLoginScreen();
         Assert.assertTrue(loginScreen.isLoginScreenTitleVisible());
