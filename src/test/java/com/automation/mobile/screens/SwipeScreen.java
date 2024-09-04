@@ -123,19 +123,16 @@ public class SwipeScreen extends BaseScreen {
     }
 
     private void swipeVertical() {
-        int screenWidth = 27;
-        int screenHeight = 2172;
+        int startX = 481;
+        int startY = 286;
 
-        int startX = screenWidth / 2;
-        int startY = (int) (screenHeight * 0.7);
-
-        int endY = screenHeight - 100;
+        int endY = 2167;
 
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
         Sequence sequence = new Sequence(finger, 1)
-                .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+                .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, endY))
                 .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
-                .addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, endY))
+                .addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), startX, startY))
                 .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
 
         driver.perform(Collections.singletonList(sequence));
