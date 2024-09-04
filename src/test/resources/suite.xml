@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Mobile Automation Suite">
+    <test name="Navigate on bottom Test">
+        <classes>
+            <class name="com.automation.mobile.test.NavigateOnBottomMenuTest"/>
+        </classes>
+    </test>
+
+    <test name="Successful Sign Up Test">
+        <parameter name="password" value="password"/>
+        <classes>
+            <class name="com.automation.mobile.test.SuccessfulSignUpTest"/>
+        </classes>
+    </test>
+
+    <test name="Successful log in Test">
+        <parameter name="password" value="password"/>
+        <classes>
+            <class name="com.automation.mobile.test.SuccessfulLoginTest"/>
+        </classes>
+    </test>
+
+    <test name="Successful swipe Test">
+        <classes>
+            <class name="com.automation.mobile.test.SwipeCardsTest"/>
+        </classes>
+    </test>
+</suite>
