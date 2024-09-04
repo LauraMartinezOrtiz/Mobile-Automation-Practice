@@ -21,6 +21,9 @@ public class SignUpScreen extends BaseScreen {
     private static final String SUCCESS_TITLE = "UiSelector().resourceId(\"android:id/alertTitle\")";
     private static final String SUCCESS_MSG = "UiSelector().resourceId(\"android:id/message\")";
 
+    private static final String LOGIN_LABEL_BTN = "UiSelector().text(\"Login\")";
+    private static final String OK_BUTTON = "UiSelector().resourceId(\"android:id/button1\")";
+
     @AndroidFindBy(uiAutomator = LOGIN_TITLE)
     private WebElement titleTxt;
 
@@ -47,6 +50,12 @@ public class SignUpScreen extends BaseScreen {
 
     @AndroidFindBy(uiAutomator = SUCCESS_MSG)
     private WebElement successMsg;
+
+    @AndroidFindBy(uiAutomator = OK_BUTTON)
+    private WebElement okBtn;
+
+    @AndroidFindBy(uiAutomator = LOGIN_LABEL_BTN)
+    private WebElement loginLabelBtn;
 
     public boolean isSignUpScreenTitleVisible() {
         return super.isElementVisible(titleTxt);
@@ -98,12 +107,19 @@ public class SignUpScreen extends BaseScreen {
         return super.isElementVisible(successMsg);
     }
 
-    public String getSignUpTitle(){
+    public String getSignUpSuccessfulTitle(){
         return successTitle.getText();
     }
 
-    public String getSignUpMsg(){
+    public String getSignUpSuccessfulMsg(){
         return successMsg.getText();
+    }
+
+    public LoginScreen goBackToLoginScreen(){
+        okBtn.click();
+        super.isElementVisible(loginLabelBtn);
+        loginLabelBtn.click();
+        return new LoginScreen(driver);
     }
 
     private String generateRandomEmail() {

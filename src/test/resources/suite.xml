@@ -13,4 +13,11 @@
             <class name="com.automation.mobile.test.SuccessfulSignUpTest"/>
         </classes>
     </test>
+
+    <test name="Successful log in Test">
+        <parameter name="password" value="password"/>
+        <classes>
+            <class name="com.automation.mobile.test.SuccessfulLoginTest"/>
+        </classes>
+    </test>
 </suite>

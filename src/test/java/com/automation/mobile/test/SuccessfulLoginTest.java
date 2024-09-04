@@ -9,25 +9,22 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class SuccessfulSignUpTest extends BaseTest {
+public class SuccessfulLoginTest extends BaseTest {
 
-    private LoginScreen loginScreen;
+    SignUpScreen signUpScreen;
 
     @BeforeTest
-    public void checkLoginScreenTest() {
+    @Parameters({"password"})
+    public void checkLoginScreenTest(String password) {
         HomeScreen homeScreen = returnHomeScreen();
-        loginScreen = homeScreen.openLoginScreen();
+        LoginScreen loginScreen = homeScreen.openLoginScreen();
         Assert.assertTrue(loginScreen.isLoginScreenTitleVisible());
         Assert.assertTrue(loginScreen.isLoginFormVisible());
         Assert.assertTrue(loginScreen.isEmailInputVisible());
         Assert.assertTrue(loginScreen.isPasswordInputVisible());
         Assert.assertTrue(loginScreen.isLoginButtonVisible());
-    }
 
-    @Test
-    @Parameters({"password"})
-    public void successfulSignUpTest(String password) {
-        SignUpScreen signUpScreen = loginScreen.openSignUpScreen();
+        signUpScreen = loginScreen.openSignUpScreen();
         Assert.assertTrue(signUpScreen.isSignUpScreenTitleVisible());
         Assert.assertTrue(signUpScreen.isSignUpFormVisible());
         Assert.assertTrue(signUpScreen.isEmailInputVisible());
@@ -43,6 +40,16 @@ public class SuccessfulSignUpTest extends BaseTest {
         Assert.assertTrue(signUpScreen.isSuccessMsgVisible());
         Assert.assertEquals(signUpScreen.getSignUpSuccessfulTitle(), "Signed Up!");
         Assert.assertEquals(signUpScreen.getSignUpSuccessfulMsg(), "You successfully signed up!");
-
     }
+
+    @Test
+    public void successfulLoginTest(){
+        LoginScreen loginScreen = signUpScreen.goBackToLoginScreen();
+        Assert.assertTrue(loginScreen.isLoginSuccessAlertVisible());
+        Assert.assertTrue(loginScreen.isSuccessTitleVisible());
+        Assert.assertTrue(loginScreen.isSuccessMsgVisible());
+        Assert.assertEquals(loginScreen.getLoginSuccessfulTitle(), "Success");
+        Assert.assertEquals(loginScreen.getLoginSuccessfulMsg(), "You are logged in!");
+    }
+
 }

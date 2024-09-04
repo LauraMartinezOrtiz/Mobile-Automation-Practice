@@ -5,6 +5,7 @@ import com.automation.mobile.utils.tests.BaseTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class NavigateOnBottomMenuTest extends BaseTest {
@@ -12,7 +13,7 @@ public class NavigateOnBottomMenuTest extends BaseTest {
     private HomeScreen homeScreen;
     Logger log = LoggerFactory.getLogger(NavigateOnBottomMenuTest.class);
 
-    @Test
+    @BeforeTest
     public void checkHomeScreenTest() {
         homeScreen = returnHomeScreen();
         Assert.assertTrue(homeScreen.isHomeScreenLogoVisible());
